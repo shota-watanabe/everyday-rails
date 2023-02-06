@@ -31,12 +31,9 @@ RSpec.describe Project, type: :model do
 
   # ユーザー単位では重複したプロジェクト名を許可しないこと
   it "does not allow duplicate project names per user" do
-    user = FactoryBot.create(:user)
-    user.projects.create(
-      name: "Test Project",
-    )
+    user = FactoryBot.create(:user, :with_project)
     new_project = user.projects.build(
-      name: "Test Project",
+      name: user.projects.first.name,
     )
     new_project.valid?
     expect(new_project.errors[:name]).to include("has already been taken")
