@@ -16,8 +16,6 @@ module Projects
     # -- all .rb files in that directory are automatically loaded.
     config.generators do |g|
       g.test_framework :rspec,
-      # テストデータベースにレコードを作成するファイルの作成をスキップ
-      fixtures: false,
       # ビュースペックを作成しないことを指定
       view_specs: false,
       # ヘルパーファイル用のスペックを作成しないことを指定
